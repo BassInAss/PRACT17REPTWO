@@ -43,6 +43,15 @@ namespace PRACT17KON
                 Assert.IsTrue(str.Displayed == true);
             webDriver.Close();
         }
+        [TestCase]
+        public void IsLinkChanged()
+        {
+            webDriver.Url = "https://esia.gosuslugi.ru/login/";
+            IWebElement button = webDriver.FindElement(By.XPath("/html/body/esia-root/div/esia-idp/div/div[1]/esia-header/header/a"));
+            button.Click();
+            Assert.AreEqual(webDriver.Url, "http://gosuslugi.ru/");
+            webDriver.Close();
+        }
         public bool IsLoaded(string XPath)
         {
             var wait = new WebDriverWait(webDriver, new TimeSpan(0, 0, 30));
